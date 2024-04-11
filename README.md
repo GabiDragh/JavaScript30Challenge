@@ -12,3 +12,6 @@ Keeping it the same as in tutorial - makes things more interesting and getting o
 First time working with the html, css and js code in one file. Finding it challenging as having to scroll up and down to see classes (not a fan of checking in console all the time, prefer to have them all in VS Code as separate split tabs).
 Neat little clock done, added some if statements to solve the reset each minute issue. Also reduced the transition time to remove the flicker at minute change.
 
+## Day3 - CSS variables done
+
+Nice lesson, found it helpful to see css variables update in browser automatically, using javascript logic (event listeners).

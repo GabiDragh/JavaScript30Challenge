@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DANCE×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'Hugo', age: 8 }, { name: 'Azorel', age: 5 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+    console.log(`Mais qu'est que c'est ca?`)
+
+    // Interpolated -> use %s 
+
+    console.log('Hello I am a %s string!', '🧵');
+
+    // Styled -> use %c
+
+    console.log('%c WordArt style text - Yes, I am that old', 'font-size:20px; color:skyblue; background:salmon; text-shadow: 3px 3px 0 purple')
+
+    // Warning!
+
+    console.warn('Oy!')
+
+    // Error :|
+
+    console.error('Ooopses!')
+
+    // Info
+
+    console.info('A clever fact'); //doesn't do anything in my dev tools
+
+    // Testing
+
+    console.assert(1 === 100, 'Why, just why?')
+
+    const p = document.querySelector('p');
+
+    console.assert(p.classList.contains('street'), 'No no no!');
+
+    // Clearing
+
+    // console.clear(); //good for messing with people, I like it!
+
+    // Viewing DOM Elements
+
+    console.log(p);
+    console.dir(p) //brings on the dropdown allowing to see all properties of the element
+
+    // Grouping together
+
+    dogs.forEach(dog => {
+      // console.group(`${dog.name}`);
+      console.groupCollapsed(`${dog.name}`)
+      console.log(`this is ${dog.name}`);
+      console.log(`${dog.name} is ${dog.age} years old`);
+      console.log(`${dog.name} is ${dog.age * 5} years old`);
+      console.groupEnd(`${dog.name}`);
+      
+    })
+
+    // Counting
+
+    console.count('Cutzu cutzu');
+    console.count('Cutzu cutzu');
+    console.count('Daiv and Staiv');
+    console.count('Cutzu cutzu');
+    console.count('Cutzu cutzu');
+    console.count('Daiv and Staiv');
+    console.count('Cutzu cutzu');
+    console.count('Cutzu cutzu');
+    console.count('Daiv and Staiv');
+    console.count('Cutzu cutzu');
+    console.count('Cutzu cutzu');
+    console.count('Daiv and Staiv');
+
+    // Timing
+
+    console.time('fetch data');
+    fetch('https://api.github.com/users/wesbos') //sanchi data, not existing, but good effort, the only time I want to copy something
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      });
+
+    // Table, cause he likes it
+    
+    console.table(dogs)
+
+
+  </script>
+</body>
+</html>

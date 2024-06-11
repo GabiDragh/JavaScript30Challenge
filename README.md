@@ -15,3 +15,8 @@ Neat little clock done, added some if statements to solve the reset each minute 
 ## Day3 - CSS variables done
 
 Nice lesson, found it helpful to see css variables update in browser automatically, using javascript logic (event listeners).
+
+## Day4 - Array Cardio Day 1 done
+
+
+

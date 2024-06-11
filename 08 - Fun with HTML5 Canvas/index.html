@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML5 Canvas</title>
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+<canvas id="draw" width="800" height="800"></canvas>
+<script>
+// INFO: Select canvas
+
+  const canvas = document.querySelector('#draw')
+// canvas is like paint, a block of pixels you draw on. you draw on ctx - 2d in this case
+
+const ctx = canvas.getContext('2d')
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+ctx.strokeStyle = '#BADA55'; //at the start, there needs to be a color
+ctx.lineJoin = 'round'; //end of line should be rounded around the corner - mdn for different line join and caps
+ctx.lineCap = 'round'; //creates the continuous line effect - without it, the line looks like a construction of individual 'sticks'
+ctx.lineWidth = 10; //thicker line
+
+//globalCompositeOperation - blends the colors when drawing (all turned black here so not using now, good to know though)
+
+let isDrawing = false; //draw when the cursor is down - click down is true, click up is false
+let lastX = 0;
+let lastY = 0; //when we drawn on a canvas, we need a starting start x and y, and an ending x and y 
+let hue = 0; //mother-effinghsl website for the rainbow - can programmatically pick parts of the rainbow, changing the light and alpha. 
+
+// function to be called when we move mouse on the canvas
+function draw(e) {
+
+if (!isDrawing) return; //stop the function from running where the mouse is not pressed down
+console.log(e); //only console log when the mouse is down
+
+ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`; //100% saturation and 50% lightness
+ctx.beginPath();
+//path starts from 0, 0
+ctx.moveTo(lastX, lastY);
+//path goes to where the users mouse is clicking down
+ctx.lineTo(e.offsetX, e.offsetY); //offsetX and offsetY from the event logged in the console
+ctx.stroke();
+// lastX = e.offsetX; //update last x, to follow mouse tracing path
+// lastY = e.offsetY; //update last y, to follow mouse tracing path
+[lastX, lastY] = [e.offsetX, e.offsetY] //array destructuring replacing the 2 lines above
+hue++ //increment the hue to create the rainbow stroke effect
+if (hue >= 360) {
+  hue = 0; //reset the hue to 0 if it goes past 360 (gets back to initial red color)
+}
+}
+
+
+canvas.addEventListener('mousedown', (e) => {
+  isDrawing = true;
+  [lastX, lastY] = [e.offsetX, e.offsetY]; //on mouse down, update the last coordinates before mouseup -> solves the continuous line issue, where the next line started on the previous line's end and starts drawing wherever the mouse touches the canvas, rather than from 0, 0
+  hue= 0; //reset hue to 0, on the next mouse down
+})
+
+
+canvas.addEventListener('mousemove', draw) //mouse move properties, including the coordinates
+canvas.addEventListener('mouseup', () => isDrawing = false)
+canvas.addEventListener('mouseout', () => isDrawing = false) //can click down, let mouse leave the window and come back and it still thinks the mouse is down - this recognises that you are no longer drawing
+
+</script>
+
+<style>
+  html, body {
+    margin: 0;
+  }
+</style>
+
+</body>
+</html>

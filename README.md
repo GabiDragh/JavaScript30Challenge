@@ -24,7 +24,14 @@ Filter, map, sort, reduce through various arrays.
 
 Playing with css flex and display to resize and create a text transition.
 
-## Day 6 - Type Ahead
+## Day 6 - Type Ahead done
 
 Fetch a json file and filter through it to display the city and the population. Highlight the typed characters and display the population with a comma divider for better reading.
+
+## Day 7 - !!!!! Array Cardio day 2 - skipped!!!!!
+
+## Day 8 - Fun with HTML canvas done
+
+Draw on HTML canvas and learn fundamentals on how it works and mouse events.
+
 

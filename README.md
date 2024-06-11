@@ -18,5 +18,8 @@ Nice lesson, found it helpful to see css variables update in browser automatical
 
 ## Day4 - Array Cardio Day 1 done
 
+Filter, map, sort, reduce through various arrays.
 
+## Day5 - Flex Panel Gallery done
 
+Playing with css flex and display to resize and create a text transition.

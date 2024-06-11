@@ -34,4 +34,11 @@ Fetch a json file and filter through it to display the city and the population. 
 
 Draw on HTML canvas and learn fundamentals on how it works and mouse events.
 
+## Day 9 - Dev Tools Domination
+
+Some dev very tools useful shortcuts. Fun lesson.
+
+## Day 10 - Hold Shift to Check Multiple Boxes
+
+🤯 Checklist hold shift and tick multiple boxes, both ways (up down and vice versa) -> needs a couple of re-reads and writing from memory to fully sediment. Concept not hard, though.
 

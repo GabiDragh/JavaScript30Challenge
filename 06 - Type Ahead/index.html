@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Type Ahead 👀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="https://fav.farm/🔥" />
+</head>
+<body>
+
+  <form class="search-form">
+    <input type="text" class="search" placeholder="City or State">
+    <ul class="suggestions">
+      <li>Filter for a city</li>
+      <li>or a state</li>
+    </ul>
+  </form>
+<script>
+const endpoint = 'https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json';
+
+const cities = [];
+//INFO: Use fetch -> returns a promise - > doesn't return the data, but the promise. You call it using .then. The data that comes back doesn't know what type of data it is yet. We know it's json. It has to be converted from raw into json.
+
+fetch(endpoint)
+.then(response => response.json())
+.then(data => cities.push(...data)) //spread the data so it doesn't nest an array inside an array -> push adds to the array 
+
+function findMatches(wordToMatch, cities) {
+  return cities.filter(place => {
+    //match city/state typed
+    const regex = new RegExp(wordToMatch, 'gi') //global insensitive - looking glabally and matching uppercase/lowercase
+    return place.city.match(regex) || place.state.match(regex) //match either city or state
+})
+}
+
+//Function to display commas in the area code -> look it up online, pretty standard => I typed it in from the class video
+function formatPopulation(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+//Function to display matches only when someone starts typing in the search box
+
+function displayMatches() {
+  console.log(this.value)
+  const matchArray = findMatches(this.value, cities);
+  console.log(matchArray) //on type (keyup event) -> matches the array containing the typed info
+
+  // Highlight the letters searched
+  const addHtml = matchArray.map(place => {
+  const regex = new RegExp(this.value, 'gi');
+  const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`); //replace the regex with a span class of highlight the value
+  const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`); //replace the regex with a span class of highlight the value
+
+  //Map over it
+  
+    return `
+    <li>
+      <span class="name">${cityName}, ${stateName}</span>
+      <span class="population">${formatPopulation(place.population)}</span>
+    </li>
+  `;
+  }).join(''); //turn from one array with multiple items into one big string
+  suggestions.innerHTML = addHtml;
+
+}
+
+const searchInput = document.querySelector('.search');
+const suggestions = document.querySelector('.suggestions');
+
+searchInput.addEventListener('change', displayMatches) //fires when you go off the input
+searchInput.addEventListener('keyup', displayMatches) //run at every key type
+
+</script>
+</body>
+</html>

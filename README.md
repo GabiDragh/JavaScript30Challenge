@@ -45,3 +45,6 @@ Some dev very tools useful shortcuts. Fun lesson.
 ## Day 11 - Custom Video Player
 
 Build a custom video player, with a button to play/pause, slider for volume and video speed and skip buttons. 
+
+## Day 12 - Key sequence detection
+

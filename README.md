@@ -42,3 +42,6 @@ Some dev very tools useful shortcuts. Fun lesson.
 
 🤯 Checklist hold shift and tick multiple boxes, both ways (up down and vice versa) -> needs a couple of re-reads and writing from memory to fully sediment. Concept not hard, though.
 
+## Day 11 - Custom Video Player
+
+Build a custom video player, with a button to play/pause, slider for volume and video speed and skip buttons. 
